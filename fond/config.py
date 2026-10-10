@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import tomllib
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 
 PAPER_URL = "https://paper-api.alpaca.markets"
@@ -36,11 +37,31 @@ class ExecutionConfig:
 
 
 @dataclass(frozen=True)
+class TokenConfig:
+    symbol: str = "PAC-SIM"
+    decimals: int = 6
+    max_supply: Decimal = Decimal("1000000")
+    issuer_account: str = "treasury"
+
+    def validate(self) -> "TokenConfig":
+        if not self.symbol or not self.symbol.isupper() or len(self.symbol) > 16:
+            raise ValueError("token.symbol doit être court et en majuscules")
+        if not 0 <= self.decimals <= 18:
+            raise ValueError("token.decimals doit être compris entre 0 et 18")
+        if self.max_supply <= 0:
+            raise ValueError("token.max_supply doit être positif")
+        if not self.issuer_account or any(c.isspace() for c in self.issuer_account):
+            raise ValueError("token.issuer_account est invalide")
+        return self
+
+
+@dataclass(frozen=True)
 class AppConfig:
     strategy: StrategyConfig = StrategyConfig()
     risk: RiskConfig = RiskConfig()
     backtest: BacktestConfig = BacktestConfig()
     execution: ExecutionConfig = ExecutionConfig()
+    token: TokenConfig = TokenConfig()
 
     def validate(self) -> "AppConfig":
         s, r, b, e = self.strategy, self.risk, self.backtest, self.execution
@@ -58,6 +79,7 @@ class AppConfig:
             raise ValueError("paramètres backtest invalides")
         if e.base_url != PAPER_URL:
             raise ValueError(f"execution.base_url doit être exactement {PAPER_URL}")
+        self.token.validate()
         return self
 
 
@@ -71,6 +93,12 @@ def load_config(path: str | Path = "config.toml") -> AppConfig:
         RiskConfig(**raw.get("risk", {})),
         BacktestConfig(**raw.get("backtest", {})),
         ExecutionConfig(**raw.get("execution", {})),
+        TokenConfig(
+            symbol=raw.get("token", {}).get("symbol", "PAC-SIM"),
+            decimals=raw.get("token", {}).get("decimals", 6),
+            max_supply=Decimal(str(raw.get("token", {}).get("max_supply", "1000000"))),
+            issuer_account=raw.get("token", {}).get("issuer_account", "treasury"),
+        ),
     ).validate()
 
 

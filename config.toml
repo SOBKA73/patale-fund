@@ -16,3 +16,9 @@ slippage_bps = 5.0
 [execution]
 base_url = "https://paper-api.alpaca.markets"
 dry_run = true
+
+[token]
+symbol = "PAC-SIM"
+decimals = 6
+max_supply = "1000000"
+issuer_account = "treasury"

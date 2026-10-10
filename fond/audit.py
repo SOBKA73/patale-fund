@@ -4,7 +4,18 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-EVENTS = {"DECISION", "RISK_REFUSAL", "ORDER_INTENT", "ORDER_SENT", "DRY_RUN", "ERROR", "KILL_SWITCH"}
+EVENTS = {
+    "DECISION",
+    "RISK_REFUSAL",
+    "ORDER_INTENT",
+    "ORDER_SENT",
+    "DRY_RUN",
+    "ERROR",
+    "KILL_SWITCH",
+    "TOKEN_ISSUED",
+    "TOKEN_TRANSFERRED",
+    "TOKEN_BURNED",
+}
 
 
 def append_event(path: str | Path, event_type: str, payload: dict, version: str = "unknown") -> None:
