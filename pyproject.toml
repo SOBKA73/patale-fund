@@ -7,7 +7,7 @@ name = "patale-fund"
 version = "0.1.0"
 description = "Laboratoire de paper trading open source, simulation uniquement"
 requires-python = ">=3.11,<3.13"
-dependencies = ["numpy==2.2.1", "pandas==2.2.3", "alpaca-py==0.38.0"]
+dependencies = ["numpy==2.4.6", "pandas==2.2.3", "alpaca-py==0.38.0"]
 
 [project.optional-dependencies]
 dev = ["pytest==8.3.4", "pytest-cov==6.0.0", "ruff==0.8.6"]
