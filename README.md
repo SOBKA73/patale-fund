@@ -1,60 +1,49 @@
+SIMULATION INTERNE. Aucun capital réel. Document de travail, non destiné à un tiers ni à une offre de titres ou de services financiers.
+
 # PATALE-EMPIRE-CAPITALE — documentation interne
 
-> **BROUILLON — à valider par le gestionnaire humain**
->
-> **SIMULATION INTERNE. Aucun capital réel. Ce document ne constitue pas une offre de titres, de parts ou de services financiers et ne doit pas être diffusé à aucun tiers.**
+**Statut : brouillon — à valider par le gestionnaire humain.**
 
-## Objet du dépôt
+## Objet
 
-Ce dépôt rassemble la documentation interne du fonds **SIMULÉ PATALE-EMPIRE-CAPITALE** pour un environnement pédagogique et de recherche consacré au **paper trading**. Il décrit l'organisation, les responsabilités, les procédures de contrôle et les registres de décision du simulateur.
+Ce dépôt rassemble la documentation interne du fonds **simulé** PATALE-EMPIRE-CAPITALE dans le cadre d’un projet de recherche et d’apprentissage en paper trading. Il décrit le cadre de gouvernance, les procédures de travail et les registres du simulateur.
 
-Le dépôt ne contient ni moteur de trading, ni module de risque, ni stratégie de trading. Ces composants relèvent d'autres dépôts et d'étapes distinctes.
+Ce lot ne contient aucun code de trading, module de risque ou stratégie. Les décisions finales appartiennent au gestionnaire humain.
 
-## Périmètre
+## Périmètre documentaire
 
-Le contenu est limité à des outils de travail internes pour la simulation :
+Le dépôt est limité aux catégories suivantes :
 
-- gouvernance et organigramme ;
-- fiches de mandat des agents et rôles humains ;
-- procédures internes ;
-- journaux et registres ;
-- glossaire commun.
+- `gouvernance/` — rôles, organigrammes et règles de gouvernance proposées ;
+- `procedures/` — procédures internes de travail ;
+- `registres/` — journaux et registres de traçabilité ;
+- `docs/` — documentation de référence interne ;
+- `mandats/` — brouillons de mandats internes, après validation du lot 1.
 
-Les documents restent marqués **brouillon** tant qu'ils n'ont pas été validés par le gestionnaire humain.
+Les autres dépôts éventuels sont hors du périmètre de ce lot et ne sont pas activés par ce document.
 
-## Dépôts associés
+## Dépôts associés proposés
 
-- `patale-fund` — gouvernance, procédures, mandats et registres de la simulation ;
-- `patale-risk` — dépôt prévu pour les travaux de risque, hors périmètre de ce dépôt ;
-- autres dépôts — à ajouter après validation humaine de leur périmètre.
+- `patale-fund` — documentation interne, gouvernance, procédures et registres de la simulation ;
+- autres dépôts — à identifier et à soumettre séparément au gestionnaire humain avant toute utilisation.
 
-## Règles de sécurité et d'usage
+## Règles de contribution
 
-- Aucun capital réel n'est utilisé.
-- Aucune clé, aucun identifiant de broker réel et aucune donnée personnelle de tiers ne doivent être ajoutés.
-- Aucun contenu destiné à des investisseurs, prospectus, note d'information, pitch, contenu marketing ou promesse de rendement ne doit être produit ici.
-- Les besoins éventuels en statuts, immatriculation ou agrément sont uniquement consignés comme questions à soumettre à un avocat ; ils ne sont pas rédigés dans ce dépôt.
-- Les documents sont internes et ne doivent pas être diffusés à des tiers.
+1. Une branche dédiée est créée pour chaque lot cohérent.
+2. Aucun push direct sur `main`.
+3. Une pull request est ouverte pour chaque lot, avec une description claire du périmètre, des hypothèses et des points ouverts.
+4. Une seule pull request est ouverte pour le présent lot et elle reste sans fusion jusqu’à validation humaine.
+5. Chaque document commence par le présent avertissement et porte un statut explicite : `brouillon`, `à valider` ou `validé`.
+6. Les décisions de gouvernance non arrêtées sont présentées sous forme de deux options maximum, avec leurs conséquences ; elles restent soumises au gestionnaire humain.
+7. Aucun secret, identifiant, clé, token ou donnée personnelle de tiers ne doit être ajouté au dépôt.
+8. Toute question juridique éventuelle est notée comme question à soumettre à un avocat ; aucun dossier officiel n’est rédigé ici.
 
-## Workflow de contribution
+## État du lot 1
 
-1. Créer une branche dédiée à chaque livrable ou lot cohérent.
-2. Ne jamais pousser directement sur `main`.
-3. Décrire clairement le périmètre, les hypothèses et les points ouverts dans la pull request.
-4. Ouvrir une pull request pour chaque lot.
-5. Marquer tout document non validé comme **brouillon**.
-6. Lorsqu'une décision de gouvernance n'est pas tranchée, proposer deux options avec leurs conséquences et laisser le choix au gestionnaire humain.
-7. Obtenir une validation humaine avant de produire les mandats détaillés des agents.
-
-## État du premier lot
-
-Ce premier lot contient :
+Le lot 1 comprend :
 
 - `README.md` ;
-- `gouvernance/organigramme.md`.
+- `gouvernance/organigramme.md` ;
+- `registres/journal_decisions.md`, laissé vide et prêt à recevoir des décisions explicites.
 
-La charte des comités, les mandats, les procédures et les registres seront traités dans des lots ultérieurs après validation humaine de ce premier lot.
-
-## Licence et diffusion
-
-Aucune licence de diffusion externe n'est définie à ce stade. Toute réutilisation ou diffusion doit faire l'objet d'une validation humaine préalable.
+Les modifications ultérieures sont suspendues jusqu’à validation humaine de ce lot.

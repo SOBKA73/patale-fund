@@ -1,16 +1,23 @@
+SIMULATION INTERNE. Aucun capital réel. Document de travail, non destiné à un tiers ni à une offre de titres ou de services financiers.
+
 # Journal des décisions
 
-> **BROUILLON — à valider par le gestionnaire humain**
->
-> **SIMULATION INTERNE. Aucun capital réel. Ce document ne constitue pas une offre de titres, de parts ou de services financiers et ne doit pas être diffusé à aucun tiers.**
+**Statut : brouillon — à valider par le gestionnaire humain.**
 
 ## Règles de tenue
 
-Chaque entrée comporte une date, un auteur, l'instance ou le contexte, une décision et sa justification. Les décisions en attente sont explicitement marquées comme telles.
+Ce journal est volontairement vide dans le lot 1. Une entrée ne peut être ajoutée qu’après une décision explicite du gestionnaire humain ou une décision soumise à validation, selon le processus qui sera validé.
+
+## Format d’entrée
+
+Chaque entrée doit contenir les champs suivants :
+
+- **Date :** `AAAA-MM-JJ` ;
+- **Auteur :** personne ou fonction, sans donnée personnelle superflue ;
+- **Décision :** texte précis de la décision ou mention « à valider » ;
+- **Justification :** motifs, hypothèses et conséquences connues ;
+- **Statut :** `brouillon`, `à valider` ou `validé`.
 
 ## Entrées
 
-| Date | Auteur | Instance / sujet | Décision | Justification |
-|---|---|---|---|---|
-| 2026-10-10 | Gestionnaire humain, via instruction de validation | Création du dépôt et séquencement des lots | **Validé :** le premier lot (`README.md` et `gouvernance/organigramme.md`) peut être suivi par les mandats | Validation humaine accordée ; les mandats peuvent être produits, tandis que les choix de gouvernance non tranchés restent soumis à décision explicite. |
-| 2026-10-10 | Agent de documentation, brouillon | Gouvernance non tranchée | **En attente :** choisir les titulaires, quorums, fréquences et règles de veto | Les options et leurs conséquences sont présentées dans les documents de gouvernance ; aucune option n'est adoptée implicitement. |
+Aucune entrée.
