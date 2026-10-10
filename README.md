@@ -1,60 +1,37 @@
-# PATALE-EMPIRE-CAPITALE — documentation interne
+# PATALE-EMPIRE-CAPITALE — Axe Capital MVP
 
-> **BROUILLON — à valider par le gestionnaire humain**
->
-> **SIMULATION INTERNE. Aucun capital réel. Ce document ne constitue pas une offre de titres, de parts ou de services financiers et ne doit pas être diffusé à aucun tiers.**
+> **SIMULATION UNIQUEMENT.** Aucun capital réel, aucun compte réel, aucune promesse de rendement et aucun conseil en investissement. Projet de recherche open source en paper trading.
 
-## Objet du dépôt
+Ce dépôt contient un squelette testé d’un moteur de données, stratégie placeholder, backtest, garde-fous, exécution paper et audit. La stratégie de retour à la moyenne par z-score valide l’architecture uniquement ; aucune conclusion de rentabilité n’est produite.
 
-Ce dépôt rassemble la documentation interne du fonds **SIMULÉ PATALE-EMPIRE-CAPITALE** pour un environnement pédagogique et de recherche consacré au **paper trading**. Il décrit l'organisation, les responsabilités, les procédures de contrôle et les registres de décision du simulateur.
+## Installation
 
-Le dépôt ne contient ni moteur de trading, ni module de risque, ni stratégie de trading. Ces composants relèvent d'autres dépôts et d'étapes distinctes.
+Python 3.11 est requis. Installation locale recommandée :
 
-## Périmètre
+```bash
+python -m venv .venv
+. .venv/bin/activate
+pip install -e '.[dev]'
+```
 
-Le contenu est limité à des outils de travail internes pour la simulation :
+Les clés `ALPACA_API_KEY` et `ALPACA_SECRET_KEY` ne sont jamais versionnées. Elles ne sont nécessaires que pour un envoi paper explicitement demandé ; `.env.example` ne contient que les noms de variables.
 
-- gouvernance et organigramme ;
-- fiches de mandat des agents et rôles humains ;
-- procédures internes ;
-- journaux et registres ;
-- glossaire commun.
+## Commandes
 
-Les documents restent marqués **brouillon** tant qu'ils n'ont pas été validés par le gestionnaire humain.
+```bash
+python scripts/generate_sample_data.py
+pytest
+ruff check .
+ruff format --check .
+python -m fond backtest --data data/sample/prices.csv --config config.toml
+```
 
-## Dépôts associés
+Le mode `paper` est dry-run par défaut. L’envoi paper exige à la fois `--send-paper-orders`, `dry_run = false`, les deux variables d’environnement et l’URL exacte `https://paper-api.alpaca.markets`. Aucun appel live n’est accepté.
 
-- `patale-fund` — gouvernance, procédures, mandats et registres de la simulation ;
-- `patale-risk` — dépôt prévu pour les travaux de risque, hors périmètre de ce dépôt ;
-- autres dépôts — à ajouter après validation humaine de leur périmètre.
+## Structure
 
-## Règles de sécurité et d'usage
+`fond/` contient les modules du moteur ; `tests/` contient les tests sans réseau ; `data/sample/` contient des données synthétiques reproductibles ; `docs/` contient l’architecture, les décisions, les licences et la thèse à compléter par le propriétaire. `logs/` et les données brutes sont ignorés par Git.
 
-- Aucun capital réel n'est utilisé.
-- Aucune clé, aucun identifiant de broker réel et aucune donnée personnelle de tiers ne doivent être ajoutés.
-- Aucun contenu destiné à des investisseurs, prospectus, note d'information, pitch, contenu marketing ou promesse de rendement ne doit être produit ici.
-- Les besoins éventuels en statuts, immatriculation ou agrément sont uniquement consignés comme questions à soumettre à un avocat ; ils ne sont pas rédigés dans ce dépôt.
-- Les documents sont internes et ne doivent pas être diffusés à des tiers.
+## Contributions
 
-## Workflow de contribution
-
-1. Créer une branche dédiée à chaque livrable ou lot cohérent.
-2. Ne jamais pousser directement sur `main`.
-3. Décrire clairement le périmètre, les hypothèses et les points ouverts dans la pull request.
-4. Ouvrir une pull request pour chaque lot.
-5. Marquer tout document non validé comme **brouillon**.
-6. Lorsqu'une décision de gouvernance n'est pas tranchée, proposer deux options avec leurs conséquences et laisser le choix au gestionnaire humain.
-7. Obtenir une validation humaine avant de produire les mandats détaillés des agents.
-
-## État du premier lot
-
-Ce premier lot contient :
-
-- `README.md` ;
-- `gouvernance/organigramme.md`.
-
-La charte des comités, les mandats, les procédures et les registres seront traités dans des lots ultérieurs après validation humaine de ce premier lot.
-
-## Licence et diffusion
-
-Aucune licence de diffusion externe n'est définie à ce stade. Toute réutilisation ou diffusion doit faire l'objet d'une validation humaine préalable.
+Toute modification passe par une branche et une pull request. Aucun secret, donnée sensible ou clé ne doit apparaître dans le code, la configuration, les tests, les issues, la documentation ou l’historique.
