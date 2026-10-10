@@ -1,0 +1,18 @@
+[strategy]
+window = 20
+entry_z = -2.0
+exit_z = 0.0
+
+[risk]
+max_position_pct = 0.05
+max_daily_loss_pct = 0.02
+max_leverage = 1.0
+
+[backtest]
+initial_capital = 100000.0
+commission_per_trade = 0.0
+slippage_bps = 5.0
+
+[execution]
+base_url = "https://paper-api.alpaca.markets"
+dry_run = true
