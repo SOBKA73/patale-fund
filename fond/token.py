@@ -83,6 +83,7 @@ class TokenLedger:
 
     def snapshot(self) -> dict[str, str | dict[str, str]]:
         return {
+            "name": self.config.name,
             "symbol": self.config.symbol,
             "issued": str(self.issued),
             "burned": str(self.burned),
