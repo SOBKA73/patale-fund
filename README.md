@@ -28,11 +28,11 @@ python -m fond backtest --data data/sample/prices.csv --config config.toml
 
 Le mode `paper` est dry-run par défaut. L’envoi paper exige à la fois `--send-paper-orders`, `dry_run = false`, les deux variables d’environnement et l’URL exacte `https://paper-api.alpaca.markets`. Aucun appel live n’est accepté.
 
-Le registre `PAC-SIM` est une monnaie interne fictive sans valeur réelle, sans blockchain et sans transfert externe. Ses règles sont documentées dans [`docs/token.md`](docs/token.md).
+Le registre `Axe Coin (AXE)` est une monnaie interne fictive sans valeur réelle, sans blockchain et sans transfert externe. L’allocation initiale simulée est de 1 000 000 000 AXE. Ses règles sont documentées dans [`docs/token.md`](docs/token.md). Les agents autonomes simulés sont décrits dans [`docs/agents.md`](docs/agents.md).
 
 ## Structure
 
-`fond/` contient les modules du moteur et du registre `PAC-SIM` ; `tests/` contient les tests sans réseau ; `data/sample/` contient des données synthétiques reproductibles ; `docs/` contient l’architecture, les décisions, les licences, le registre de jetons et la thèse à compléter par le propriétaire. `logs/` et les données brutes sont ignorés par Git.
+`fond/` contient les modules du moteur, du registre Axe Coin et des agents simulés ; `tests/` contient les tests sans réseau ; `data/sample/` contient des données synthétiques reproductibles ; `docs/` contient l’architecture, les décisions, les licences, le registre de jetons et la thèse à compléter par le propriétaire. `logs/` et les données brutes sont ignorés par Git.
 
 ## Contributions
 

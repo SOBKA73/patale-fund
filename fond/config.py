@@ -38,12 +38,15 @@ class ExecutionConfig:
 
 @dataclass(frozen=True)
 class TokenConfig:
-    symbol: str = "PAC-SIM"
+    name: str = "Axe Coin"
+    symbol: str = "AXE"
     decimals: int = 6
-    max_supply: Decimal = Decimal("1000000")
+    max_supply: Decimal = Decimal("1000000000")
     issuer_account: str = "treasury"
 
     def validate(self) -> "TokenConfig":
+        if not self.name or len(self.name) > 32:
+            raise ValueError("token.name est invalide")
         if not self.symbol or not self.symbol.isupper() or len(self.symbol) > 16:
             raise ValueError("token.symbol doit être court et en majuscules")
         if not 0 <= self.decimals <= 18:
@@ -94,9 +97,10 @@ def load_config(path: str | Path = "config.toml") -> AppConfig:
         BacktestConfig(**raw.get("backtest", {})),
         ExecutionConfig(**raw.get("execution", {})),
         TokenConfig(
-            symbol=raw.get("token", {}).get("symbol", "PAC-SIM"),
+            name=raw.get("token", {}).get("name", "Axe Coin"),
+            symbol=raw.get("token", {}).get("symbol", "AXE"),
             decimals=raw.get("token", {}).get("decimals", 6),
-            max_supply=Decimal(str(raw.get("token", {}).get("max_supply", "1000000"))),
+            max_supply=Decimal(str(raw.get("token", {}).get("max_supply", "1000000000"))),
             issuer_account=raw.get("token", {}).get("issuer_account", "treasury"),
         ),
     ).validate()
