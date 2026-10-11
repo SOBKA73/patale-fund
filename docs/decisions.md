@@ -9,3 +9,4 @@
 | 2026-10-10 | Axe Coin (`AXE`) comme jeton interne simulé | Blockchain ou token externe | Registre local déterministe, sans valeur réelle ni dépendance réseau. |
 | 2026-10-10 | Agents déterministes à autonomie bornée | Agents connectés à des services externes | Rejouabilité, auditabilité et impossibilité d’action live. |
 | 2026-10-10 | Axe Coin (`AXE`), offre initiale simulée de 1 000 000 000 | Création de valeur externe | Capital fictif local, sans convertibilité ni blockchain. |
+| 2026-10-11 | Deux tours maximum Quant–Risk, veto Risk bloquant | Validation Portfolio sans revue Risk | Réduit les débats non bornés et empêche un ordre sans approbation de risque. |

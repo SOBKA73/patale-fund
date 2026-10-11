@@ -12,6 +12,8 @@ données CSV → Data Engineer → Quant Researcher → Risk Manager → Portfol
 
 `AutonomousSimulation` initialise une allocation de 1 000 000 000 AXE dans le registre Axe Coin, lance le cycle de travail et retourne un rapport structuré. Le cycle actuel ne simule pas encore de PnL ni d’enrichissement automatique du capital : l’offre initiale est une dotation fictive, et toute évolution du capital devra passer par un backtest explicite, des contrôles de risque et un audit.
 
+Avant la sélection du Portfolio Manager, le Quant Researcher et le Risk Manager suivent le [protocole de débat Quant–Risk](debat_quant_risk.md). Le veto Risk est bloquant et le débat est limité à deux tours par défaut.
+
 ## Règles d’autonomie
 
 Les agents peuvent proposer ou refuser, mais jamais créer de valeur externe, modifier leurs propres limites, appeler une API live, envoyer un ordre sans les contrôles existants ou transférer Axe Coin hors du registre local. Une revue humaine reste disponible pour les décisions escaladées.

@@ -4,6 +4,7 @@ from typing import Any
 
 from ..config import AppConfig
 from ..token import TokenLedger
+from .debate import QuantRiskDebate
 from .models import AgentIdentity, MarketContext
 from .registry import AgentRegistry
 from .roles import DataAgent, PortfolioManagerAgent, QuantResearcherAgent, RiskManagerAgent
@@ -21,6 +22,7 @@ class AutonomousSimulation:
         self.quant = QuantResearcherAgent(self.config)
         self.risk = RiskManagerAgent(self.config)
         self.portfolio = PortfolioManagerAgent()
+        self.debate = QuantRiskDebate(self.quant, self.risk)
         for agent in (self.data, self.quant, self.risk, self.portfolio):
             self.registry.register(agent)
         self._bootstrap_capital()
@@ -36,13 +38,15 @@ class AutonomousSimulation:
         )
         data_report = self.data.act(context)
         proposal = self.quant.act(context)
-        risk_decision = self.risk.review(proposal, context)
+        debate = self.debate.run(proposal, context)
+        risk_decision = debate.final_decision
         portfolio_decision = self.portfolio.select([risk_decision], context)
         return {
             "mode": "simulation_only",
             "autonomy": "bounded_and_auditable",
             "data_report": data_report,
             "proposal": proposal,
+            "debate": debate,
             "risk_decision": risk_decision,
             "portfolio_decision": portfolio_decision,
             "capital_axe": self.ledger.snapshot(),
